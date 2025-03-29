@@ -19,7 +19,8 @@ Designed with **Jetpack Compose and MVVM architecture**, this app offers **smoot
 - 🔥 **Animated shimmer loading effect**  
 - 💖 **Favorites & cart system with image-based selection**  
 - 📡 **Offline mode with Room Database**  
-- 🚀 **Optimized for performance & minimal memory usage**  
+- 🚀 **Optimized for performance & minimal memory usage**
+- ⚠️ **Advanced error handling for API & internet failures** 
 
 ---
 
@@ -35,6 +36,7 @@ Designed with **Jetpack Compose and MVVM architecture**, this app offers **smoot
 | **Dependency Injection** | Hilt  |
 | **Navigation**   | Jetpack Navigation  |
 | **Database**     | Room Database  |
+| **Image Loading** | Coil |
 
 ---
 
@@ -79,11 +81,30 @@ Designed with **Jetpack Compose and MVVM architecture**, this app offers **smoot
 
 ---
 
+## ⚠️ Advanced Error Handling & API Management  
+
+### 🔴 **Internet Connectivity Handling**  
+- **Detects internet connection on startup**  
+- **Offline mode support using Room database**  
+- **Automatic retry for failed requests**  
+
+### 🟡 **API Failure Handling**  
+- **Handles API failures gracefully (Timeout, 404, 500 errors)**  
+- **Retry mechanism for transient network errors**  
+- **User-friendly error messages (Snackbar/Toast UI feedback)**  
+
+### 🟢 **General Error Handling**  
+- **Coroutine Exception Handler** for managing unexpected crashes  
+- **Logs errors for debugging (Timber or Logcat)**  
+- **Graceful app shutdown if critical failure occurs**  
+
+---
+
 ## 📸 Screenshots  
 
-| Home Screen | Product Details | Cart & Favorites |
+| Home Screen | Product Details | Settings |
 |------------|----------------|------------------|
-| ![Home](https://your-image-link.com) | ![Details](https://your-image-link.com) | ![Cart](https://your-image-link.com) |
+| ![Home](https://your-image-link.com) | ![Details](https://your-image-link.com) | ![Settings](https://your-image-link.com) |
 
 ---
 
