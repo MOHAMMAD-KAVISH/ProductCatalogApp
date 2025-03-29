@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.junit.junit)
+    implementation(libs.protolite.well.known.types)
     testImplementation(libs.junit)
 
     testImplementation("junit:junit:4.13.2")

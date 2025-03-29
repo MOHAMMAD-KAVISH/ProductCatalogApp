@@ -11,7 +11,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.productcatalogapp.viewmodel.ProductViewModel
 
-
 @Composable
 fun NavGraph(
     navController: NavHostController,
@@ -19,14 +18,21 @@ fun NavGraph(
     darkModeEnabled: Boolean,
     onDarkModeToggle: () -> Unit,
     selectedLanguage: String,
-    onLanguageChange: (String) -> Unit
+    onLanguageChange: (String) -> Unit,
+    selectedTheme: String,
+    onThemeChange: (String) -> Unit,
+    fontSize: Float,
+    onFontSizeChange: (Float) -> Unit,
+    onResetDefaults: () -> Unit
 ) {
     NavHost(navController = navController, startDestination = "splash") {
-
         composable("splash") { SplashScreen(navController) }
 
-        composable("product_list",enterTransition = { fadeIn(animationSpec = tween(500)) },
-            exitTransition = { fadeOut(animationSpec = tween(500)) }) {
+        composable(
+            "product_list",
+            enterTransition = { fadeIn(animationSpec = tween(500)) },
+            exitTransition = { fadeOut(animationSpec = tween(500)) }
+        ) {
             ProductListScreen(navController, viewModel)
         }
 
@@ -35,19 +41,22 @@ fun NavGraph(
             arguments = listOf(navArgument("productId") { type = NavType.IntType })
         ) { backStackEntry ->
             val productId = backStackEntry.arguments?.getInt("productId") ?: 0
-            ProductDetailScreen(productId, viewModel)
+            ProductDetailScreen(productId, viewModel,navController)
         }
 
-        // 🔹 Settings Screen (Pass dark mode & language state)
         composable("settings") {
             SettingsScreen(
+                navController = navController, // ✅ Pass NavController for back button
                 darkModeEnabled = darkModeEnabled,
                 onDarkModeToggle = onDarkModeToggle,
                 selectedLanguage = selectedLanguage,
-                onLanguageChange = onLanguageChange
+                onLanguageChange = onLanguageChange,
+                selectedTheme = selectedTheme,
+                onThemeChange = onThemeChange,
+                fontSize = fontSize,
+                onFontSizeChange = onFontSizeChange,
+                onResetDefaults = onResetDefaults
             )
         }
     }
 }
-
-

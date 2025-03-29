@@ -1,11 +1,13 @@
 package com.example.productcatalogapp.ui
 
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
@@ -21,69 +23,23 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
 import com.example.productcatalogapp.model.Product
 import com.example.productcatalogapp.viewmodel.ProductViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-//fun ProductListScreen(navController: NavController, viewModel: ProductViewModel) {
-//    val products by viewModel.products.collectAsState()
-//    var searchQuery by remember { mutableStateOf("") }
-//    val filteredProducts = products.filter { it.title.contains(searchQuery, ignoreCase = true) }
-//
-//    Scaffold(
-//        topBar = {
-//            TopAppBar(
-//                title = { Text("Product List", fontSize = 22.sp, color = Color.White) },
-//                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
-//                modifier = Modifier.background(
-//                    Brush.horizontalGradient(listOf(Color(0xFF6A11CB), Color(0xFF2575FC)))
-//                ),
-//                actions = {
-//                    IconButton(onClick = { navController.navigate("settings") }) { // Navigate to Settings
-//                        Icon(Icons.Filled.Settings, contentDescription = "Settings", tint = Color.White)
-//                    }
-//                }
-//            )
-//        }
-//    ) { paddingValues ->
-//        Column(modifier = Modifier.padding(paddingValues)) {
-//            // Search Bar
-//            TextField(
-//                value = searchQuery,
-//                onValueChange = { searchQuery = it },
-//                placeholder = { Text("Search products...") },
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(8.dp)
-//            )
-//            // LazyColumn for displaying the products
-//            LazyColumn {
-//                items(filteredProducts) { product ->
-//                    ProductItem(product, onClick = {
-//                        navController.navigate("product_detail/${product.id}")
-//                    })
-//                }
-//            }
-//        }
-//    }
-//}
-
-
 fun ProductListScreen(navController: NavController, viewModel: ProductViewModel) {
     val products by viewModel.products.collectAsState()
     val loading by viewModel.loading.collectAsState()
     val error by viewModel.error.collectAsState()
-
     var searchQuery by remember { mutableStateOf("") }
     val filteredProducts = products.filter { it.title.contains(searchQuery, ignoreCase = true) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Product List", fontSize = 22.sp, color = Color.White) },
+                title = { Text("Product List", fontSize = 24.sp, color = Color.White, fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
                 modifier = Modifier.background(
                     Brush.horizontalGradient(listOf(Color(0xFF6A11CB), Color(0xFF2575FC)))
@@ -101,10 +57,18 @@ fun ProductListScreen(navController: NavController, viewModel: ProductViewModel)
             TextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                placeholder = { Text("Search products...") },
+                placeholder = { Text("Search products...", color = Color.Gray) },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp)
+                    .padding(16.dp)
+                    .background(Color(0xFFF5F5F5), shape = RoundedCornerShape(8.dp)),
+                colors = TextFieldDefaults.textFieldColors(
+                    containerColor = Color(0xFFF5F5F5), // Background color
+                    focusedIndicatorColor = Color(0xFF6A11CB), // Focused indicator color
+                    unfocusedIndicatorColor = Color.Gray, // Unfocused indicator color
+                    focusedTextColor = Color.Black, // Focused text color
+                    unfocusedTextColor = Color.Black // Unfocused text color
+                )
             )
 
             // Show loading indicator
@@ -141,7 +105,6 @@ fun ProductListScreen(navController: NavController, viewModel: ProductViewModel)
     }
 }
 
-
 @Composable
 fun ProductItem(product: Product, onClick: () -> Unit) {
     var isLoading by remember { mutableStateOf(true) }
@@ -154,13 +117,13 @@ fun ProductItem(product: Product, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp)
-            .shadow(8.dp, shape = MaterialTheme.shapes.medium)
+            .padding(16.dp)
+            .shadow(10.dp, shape = RoundedCornerShape(16.dp))
             .clickable(onClick = onClick),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
-        Column(modifier = Modifier.padding(12.dp)) {
+        Column(modifier = Modifier.padding(16.dp)) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -168,7 +131,6 @@ fun ProductItem(product: Product, onClick: () -> Unit) {
                     .background(Color.Gray) // Placeholder for image loading
             ) {
                 if (!isLoading) {
-                    // Using Coil for async image loading and caching
                     Image(
                         painter = rememberImagePainter(
                             data = product.images.firstOrNull(),
@@ -184,23 +146,35 @@ fun ProductItem(product: Product, onClick: () -> Unit) {
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(8.dp))
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            // Product Title
             Text(
                 text = product.title,
                 style = MaterialTheme.typography.headlineSmall,
-                color = Color(0xFF6A11CB)
+                color = Color(0xFF6A11CB),
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 4.dp)
             )
+
+            // Price
             Text(
                 text = "Price: $${product.price}",
                 style = MaterialTheme.typography.bodyLarge,
-                color = Color(0xFF2575FC)
+                color = Color(0xFF2575FC),
+                fontWeight = FontWeight.Bold
             )
+
+            // Description
             Text(
                 text = product.description,
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
+
+            // Hidden watermark
             Text(
                 text = "Designed by Mohammad Kavish",
                 fontSize = 8.sp,
