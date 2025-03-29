@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">उत्पाद सूची</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="dark_mode">डार्क मोड</string>
+    <string name="select_language">भाषा चुनें</string>
+    <string name="all_rights_reserved">सभी अधिकार सुरक्षित।</string>
+</resources>

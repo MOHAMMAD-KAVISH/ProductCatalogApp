@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Catálogo de Productos</string>
+    <string name="settings">Configuración</string>
+    <string name="dark_mode">Modo Oscuro</string>
+    <string name="select_language">Seleccionar Idioma</string>
+    <string name="all_rights_reserved">Todos los derechos reservados.</string>
+</resources>
