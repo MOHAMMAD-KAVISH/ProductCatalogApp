@@ -3,7 +3,7 @@
 📱 **A Modern, Interactive E-Commerce Catalog App**  
 Built with **Jetpack Compose, MVVM, Retrofit, Hilt, and Room Database**  
 
-![Product Catalog App](https://drive.google.com/file/d/1WFqTTKD0qmrSb6O4W8TCwweoMvtFmMJ6/view?usp=sharing)  
+![Product Catalog App](https://github.com/user-attachments/assets/f36a05a3-9646-41a4-82d6-daa3e91075a1)  
 
 ## 📽️ App Demo Video  
 [▶ Watch the Demo](https://drive.google.com/file/d/1QLYROW9ZclK0DL0UST3qSPENzmEak-MY/view?usp=sharing)
@@ -107,7 +107,7 @@ Designed with **Jetpack Compose and MVVM architecture**, this app offers **smoot
 
 | Home Screen | Product Details | Settings |
 |------------|----------------|------------------|
-| ![Home](https://drive.google.com/file/d/1ogGp2P2OpQGs3tXCDOkfH644eCq43F80/view?usp=sharing) | ![Details](https://drive.google.com/file/d/1ZGvtw6Nb2QuQofbkqRnE_oqaC3Z18Sdf/view?usp=sharing) | ![Settings](https://drive.google.com/file/d/1IWZsw46mB-aidYuuC-BLAXUTTwdzDWMu/view?usp=sharing) |
+| ![Home](https://github.com/user-attachments/assets/b816d1dd-71be-415f-b6ac-81e9e5f2553f) | ![Details](https://github.com/user-attachments/assets/41fb1fde-f816-4bc5-b8d1-35261f719a13) | ![Settings](https://github.com/user-attachments/assets/b922c5e4-e486-4bfd-b3d0-a3638338d26e) |
 
 ---
 
