@@ -4,7 +4,7 @@
 Built with **Jetpack Compose, MVVM, Retrofit, Hilt, and Room Database**  
 
  
-<img src="https://github.com/user-attachments/assets/b922c5e4-e486-4bfd-b3d0-a3638338d26e" width="400"/>
+<img src="https://github.com/user-attachments/assets/b922c5e4-e486-4bfd-b3d0-a3638338d26e" width="200"/>
 
 
 ## 📽️ App Demo Video  
