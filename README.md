@@ -3,7 +3,9 @@
 📱 **A Modern, Interactive E-Commerce Catalog App**  
 Built with **Jetpack Compose, MVVM, Retrofit, Hilt, and Room Database**  
 
-![Product Catalog App](https://github.com/user-attachments/assets/b922c5e4-e486-4bfd-b3d0-a3638338d26e)  
+ 
+<img src="https://github.com/user-attachments/assets/b922c5e4-e486-4bfd-b3d0-a3638338d26e" width="400"/>
+
 
 ## 📽️ App Demo Video  
 [▶ Watch the Demo](https://drive.google.com/file/d/1QLYROW9ZclK0DL0UST3qSPENzmEak-MY/view?usp=sharing)
